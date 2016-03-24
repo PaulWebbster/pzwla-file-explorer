@@ -1,0 +1,28 @@
+{% load i18n staticfiles cms_tags zawody_extras %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">MENU</div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#zawartosc"><span class="glyphicon glyphicon-map-marker">
+                    </span>DO POBRANIA</a>
+                </h4>
+            </div>
+            <div id="zawartosc" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <table class="table">
+                        {% for folder in menu_folders %}
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-folder-open"></span><a href="/pliki/subfolder/{{ folder.id }}">{{ folder.name }}</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
