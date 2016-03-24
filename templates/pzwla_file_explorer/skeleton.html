@@ -1,5 +1,5 @@
 {% extends "pzwla_base.html" %}
-{% load i18n staticfiles sekizai_tags cms_tags zawody_extras %}
+{% load i18n staticfiles sekizai_tags cms_tags menus zawody_extras %}
 
 {% block content %}
 
@@ -18,6 +18,7 @@
         </div>
         <!-- SIDEBAR -->
         <div class="col-md-3">
+            {% show_files_menu %}
             {% show_next_meetings %}
             {% block next-meetings %}
             {% endblock next-meetings %}
