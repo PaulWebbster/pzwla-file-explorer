@@ -1,0 +1,68 @@
+{% extends "pzwla_events/skeleton.html" %}
+{% load i18n staticfiles sekizai_tags cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %} - WYNIKI I RANKINGI - {{ events_year }}{% endblock title %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/bootstrapfixes.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}pzwla_events/styles/main-timeline.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/timeline.css">
+{% endblock extra_css %}
+
+{% block events-content %}
+<div class="panel panel-default">
+    <div class="panel-heading"><b>{{ parent.name|upper }}</b></div>
+    <div class="panel-body">
+        {% if not folders and not files %}
+        Brak plików do wyświetlenia
+        {% else %}
+        <div class="page-header">
+            <h4 id="Folders" style="text-align: center">PODKATALOGI</h4>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nazwa</th>
+                    <th class="text-center">Ostatnia modyfikacja</th>
+                    <th class="text-center">Liczba plików</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for folder in folders %}
+                <tr>
+                    <th class="col-md-1"><img src="{{ folder.get_folder_icon }}"/></th>
+                    <th class="col-md-6"><a href="/pliki/subfolder/{{ folder.id }}/">{{ folder.name }}</a></th>
+                    <th class="col-md-3 text-center">{{ folder.modified_at }}</th>
+                    <th class="col-md-2 text-center">{{ folder.file_count }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="page-header">
+            <h4 id="Files" style="text-align: center">PLIKI</h4>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nazwa pliku</th>
+                    <th class="text-center">Ostatnia modyfikacja</th>
+                    <th class="text-center">Rozmiar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in files %}
+                <tr>
+                    <th class="col-md-1"><img src="{{ file.get_document_icon }}"/></th>
+                    <th class="col-md-6"><a href="{{ file.url }}">{{ file.label }}</a></th>
+                    <th class="col-md-3 text-center">{{ file.modified_at }}</th>
+                    <th class="col-md-2 text-center">{{ file.get_mb_size }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock events-content %}
