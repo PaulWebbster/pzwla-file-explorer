@@ -1,7 +1,7 @@
 {% extends "pzwla_events/skeleton.html" %}
 {% load i18n staticfiles sekizai_tags cms_tags %}
 
-{% block title %}{% page_attribute "page_title" %} - WYNIKI I RANKINGI - {{ events_year }}{% endblock title %}
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/bootstrapfixes.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}pzwla_events/styles/main-timeline.css">
@@ -10,7 +10,7 @@
 
 {% block events-content %}
 <div class="panel panel-default">
-    <div class="panel-heading"><b>INNE PLIKI</b></div>
+    <div class="panel-heading"><b>DO POBRANIA</b></div>
     <div class="panel-body">
         <table class="table table-striped">
             <thead>
