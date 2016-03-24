@@ -5,5 +5,5 @@ from django.apps import AppConfig
 
 
 class PzwlaFileExplorerConfig(AppConfig):
-    name = "pzwla_filer_explorer"
+    name = "pzwla_file_explorer"
     verbose_name = "Modul pliki"
